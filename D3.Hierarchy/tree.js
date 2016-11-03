@@ -71,8 +71,8 @@ function update(source) {
     // Enter any new nodes at the parent's previous position.
     var nodeEnter = node.enter().append("g")
         .attr("class", "node")
-        .attr("transform", function (d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-        .on("click", click);
+        .attr("transform", function (d) { return "translate(" + source.y0 + "," + source.x0 + ")"; });
+        
 
     nodeEnter.append("circle")
         .attr("r", 1e-6)
@@ -80,7 +80,8 @@ function update(source) {
         { 
             // TODO could check the "type" of node here and display icons based on that
             return d._children ? "lightsteelblue" : "#fff"; 
-        });
+        })
+        .on("click", click);
 
     nodeEnter.append("text")
         .attr("x", function (d) { return d.children || d._children ? -13 : 13; })
